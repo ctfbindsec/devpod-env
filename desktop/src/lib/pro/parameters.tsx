@@ -27,7 +27,7 @@ export function getParametersWithValues(
   }
 
   try {
-    const out = jsyaml.load(instance.spec.parameters) as Record<string, string | number | boolean>
+    const out = jsyaml.load(instance.spec.parameters, { schema: jsyaml.CORE_SCHEMA }) as Record<string, string | number | boolean>
 
     return rawParameters.map((param) => {
       const path = param.variable
