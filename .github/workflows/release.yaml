@@ -15,7 +15,7 @@ jobs:
       release_id: ${{ steps.get-release.outputs.id }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -131,7 +131,7 @@ jobs:
           git config --global core.eol lf
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Apply Version
         if: matrix.settings.cli_only == false
@@ -508,7 +508,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Release pro provider
         run: |
