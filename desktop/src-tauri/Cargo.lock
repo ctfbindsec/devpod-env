@@ -1113,7 +1113,7 @@ dependencies = [
  "url",
  "window-vibrancy 0.5.3",
  "windows 0.48.0",
- "winreg 0.50.0",
+ "winreg 0.52.0",
 ]
 
 [[package]]
