@@ -32,7 +32,6 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterMemberAccess{},
 		&ClusterMembers{},
 		&ClusterReset{},
-		&ClusterVirtualClusterDefaults{},
 		&ClusterAccess{},
 		&ClusterAccessList{},
 		&ClusterRoleTemplate{},
@@ -41,6 +40,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ConfigList{},
 		&ConvertVirtualClusterConfig{},
 		&ConvertVirtualClusterConfigList{},
+		&DatabaseConnector{},
+		&DatabaseConnectorList{},
 		&DevPodEnvironmentTemplate{},
 		&DevPodEnvironmentTemplateList{},
 		&DevPodWorkspaceInstance{},
@@ -73,6 +74,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&LicenseTokenList{},
 		&LoftUpgrade{},
 		&LoftUpgradeList{},
+		&NodeClaim{},
+		&NodeClaimList{},
+		&NodeProvider{},
+		&NodeProviderList{},
+		&NodeType{},
+		&NodeTypeList{},
 		&OIDCClient{},
 		&OIDCClientList{},
 		&OwnedAccessKey{},
@@ -205,16 +212,11 @@ var (
 			nil,
 			management.NewClusterResetREST,
 		),
-		builders.NewApiResourceWithStorage(
-			management.InternalClusterVirtualClusterDefaultsREST,
-			func() runtime.Object { return &ClusterVirtualClusterDefaults{} }, // Register versioned resource
-			nil,
-			management.NewClusterVirtualClusterDefaultsREST,
-		),
 		management.ManagementClusterAccessStorage,
 		management.ManagementClusterRoleTemplateStorage,
 		management.ManagementConfigStorage,
 		management.ManagementConvertVirtualClusterConfigStorage,
+		management.ManagementDatabaseConnectorStorage,
 		management.ManagementDevPodEnvironmentTemplateStorage,
 		management.ManagementDevPodWorkspaceInstanceStorage,
 		builders.NewApiResourceWithStorage(
@@ -280,6 +282,24 @@ var (
 		),
 		management.ManagementLicenseTokenStorage,
 		management.ManagementLoftUpgradeStorage,
+		management.ManagementNodeClaimStorage,
+		builders.NewApiResourceWithStorage(
+			management.InternalNodeClaimStatus,
+			func() runtime.Object { return &NodeClaim{} },     // Register versioned resource
+			func() runtime.Object { return &NodeClaimList{} }, // Register versioned resource list
+			management.NewNodeClaimStatusREST),
+		management.ManagementNodeProviderStorage,
+		builders.NewApiResourceWithStorage(
+			management.InternalNodeProviderStatus,
+			func() runtime.Object { return &NodeProvider{} },     // Register versioned resource
+			func() runtime.Object { return &NodeProviderList{} }, // Register versioned resource list
+			management.NewNodeProviderStatusREST),
+		management.ManagementNodeTypeStorage,
+		builders.NewApiResourceWithStorage(
+			management.InternalNodeTypeStatus,
+			func() runtime.Object { return &NodeType{} },     // Register versioned resource
+			func() runtime.Object { return &NodeTypeList{} }, // Register versioned resource list
+			management.NewNodeTypeStatusREST),
 		management.ManagementOIDCClientStorage,
 		management.ManagementOwnedAccessKeyStorage,
 		management.ManagementProjectStorage,
@@ -582,14 +602,6 @@ type ClusterResetList struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type ClusterVirtualClusterDefaultsList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []ClusterVirtualClusterDefaults `json:"items"`
-}
-
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 type ClusterAccessList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
@@ -618,6 +630,14 @@ type ConvertVirtualClusterConfigList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []ConvertVirtualClusterConfig `json:"items"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type DatabaseConnectorList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []DatabaseConnector `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -778,6 +798,30 @@ type LoftUpgradeList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []LoftUpgrade `json:"items"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeClaimList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeClaim `json:"items"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeProviderList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeProvider `json:"items"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeTypeList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeType `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

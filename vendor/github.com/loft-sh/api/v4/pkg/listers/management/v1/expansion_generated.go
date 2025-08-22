@@ -38,6 +38,10 @@ type ConfigListerExpansion interface{}
 // ConvertVirtualClusterConfigLister.
 type ConvertVirtualClusterConfigListerExpansion interface{}
 
+// DatabaseConnectorListerExpansion allows custom methods to be added to
+// DatabaseConnectorLister.
+type DatabaseConnectorListerExpansion interface{}
+
 // DevPodEnvironmentTemplateListerExpansion allows custom methods to be added to
 // DevPodEnvironmentTemplateLister.
 type DevPodEnvironmentTemplateListerExpansion interface{}
@@ -85,6 +89,22 @@ type LicenseTokenListerExpansion interface{}
 // LoftUpgradeListerExpansion allows custom methods to be added to
 // LoftUpgradeLister.
 type LoftUpgradeListerExpansion interface{}
+
+// NodeClaimListerExpansion allows custom methods to be added to
+// NodeClaimLister.
+type NodeClaimListerExpansion interface{}
+
+// NodeClaimNamespaceListerExpansion allows custom methods to be added to
+// NodeClaimNamespaceLister.
+type NodeClaimNamespaceListerExpansion interface{}
+
+// NodeProviderListerExpansion allows custom methods to be added to
+// NodeProviderLister.
+type NodeProviderListerExpansion interface{}
+
+// NodeTypeListerExpansion allows custom methods to be added to
+// NodeTypeLister.
+type NodeTypeListerExpansion interface{}
 
 // OIDCClientListerExpansion allows custom methods to be added to
 // OIDCClientLister.
