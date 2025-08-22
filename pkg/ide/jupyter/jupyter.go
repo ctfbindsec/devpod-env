@@ -77,7 +77,7 @@ func (o *JupyterNotbookServer) installNotebook() error {
 	}
 
 	// install notebook command
-	runCommand := fmt.Sprintf("%s install notebook", baseCommand)
+	runCommand := command.Quote([]string{baseCommand, "install", "notebook"})
 	args := []string{}
 	if o.userName != "" {
 		args = append(args, "su", o.userName, "-c", runCommand)
@@ -99,7 +99,7 @@ func (o *JupyterNotbookServer) installNotebook() error {
 func (o *JupyterNotbookServer) Start() error {
 	return single.Single("jupyter.pid", func() (*exec.Cmd, error) {
 		o.log.Infof("Starting jupyter notebook in background...")
-		runCommand := fmt.Sprintf("jupyter notebook --ip='*' --NotebookApp.notebook_dir='%s' --NotebookApp.token='' --NotebookApp.password='' --no-browser --port '%s' --allow-root", o.workspaceFolder, strconv.Itoa(DefaultServerPort))
+		runCommand := command.Quote([]string{"jupyter", "notebook", "--ip=*", "--NotebookApp.notebook_dir=" + o.workspaceFolder, "--NotebookApp.token=", "--NotebookApp.password=", "--no-browser", "--port", strconv.Itoa(DefaultServerPort), "--allow-root"})
 		args := []string{}
 		if o.userName != "" {
 			args = append(args, "su", o.userName, "-w", "SSH_AUTH_SOCK", "-l", "-c", runCommand)

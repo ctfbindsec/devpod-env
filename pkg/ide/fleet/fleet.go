@@ -131,15 +131,13 @@ func (o *FleetServer) Start(binaryPath, location, projectDir string) error {
 		var runCommand string
 		version := Options.GetValue(o.values, VersionOption)
 		if version == "latest" {
-			runCommand = fmt.Sprintf(
-				"%s launch workspace -- --projectDir '%s' --cache-path '%s' --auth=accept-everyone --publish --enableSmartMode",
-				binaryPath, projectDir, location,
-			)
+			runCommand = command.Quote([]string{
+				binaryPath, "launch", "workspace", "--", "--projectDir", projectDir, "--cache-path", location, "--auth=accept-everyone", "--publish", "--enableSmartMode",
+			})
 		} else {
-			runCommand = fmt.Sprintf(
-				"%s launch workspace --workspace-version %s -- --projectDir '%s' --cache-path '%s' --auth=accept-everyone --publish --enableSmartMode",
-				binaryPath, version, projectDir, location,
-			)
+			runCommand = command.Quote([]string{
+				binaryPath, "launch", "workspace", "--workspace-version", version, "--", "--projectDir", projectDir, "--cache-path", location, "--auth=accept-everyone", "--publish", "--enableSmartMode",
+			})
 		}
 
 		args := []string{}
@@ -197,7 +195,7 @@ func (o *FleetServer) startMonitor() error {
 
 	return single.Single("fleet-monitor.pid", func() (*exec.Cmd, error) {
 		o.log.Infof("Starting fleet monitor in background...")
-		runCommand := fmt.Sprintf("%s helper fleet-server --workspaceid %s", self, "test")
+		runCommand := command.Quote([]string{self, "helper", "fleet-server", "--workspaceid", "test"})
 		args := []string{}
 		if o.userName != "" {
 			args = append(args, "su", o.userName, "-c", runCommand)

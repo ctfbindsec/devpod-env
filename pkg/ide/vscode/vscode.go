@@ -108,7 +108,7 @@ func (o *VsCodeServer) InstallExtensions() error {
 	// download extensions
 	for _, extension := range o.extensions {
 		o.log.Info("Install extension " + extension + "...")
-		runCommand := fmt.Sprintf("%s serve-local --accept-server-license-terms --install-extension '%s'", binPath, extension)
+		runCommand := command.Quote([]string{binPath, "serve-local", "--accept-server-license-terms", "--install-extension", extension})
 		args := []string{}
 		if o.userName != "" {
 			args = append(args, "su", o.userName, "-c", runCommand)
