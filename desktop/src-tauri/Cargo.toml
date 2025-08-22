@@ -62,7 +62,7 @@ ts-rs = { version = "6.2.1", features = ["serde-compat", "chrono-impl"] }
 semver = "1.0.18"
 strip-ansi-escapes = "0.1.1"
 axum = { version = "0.7.1", features = ["ws"] }
-tower-http = { version = "0.5.1", features = ["cors"] }
+tower-http = { version = "0.6.6", features = ["cors"] }
 http = "1.0.0"
 nix = { version = "0.29.0", features = ["signal"] }
 interprocess = "1.2.1"
