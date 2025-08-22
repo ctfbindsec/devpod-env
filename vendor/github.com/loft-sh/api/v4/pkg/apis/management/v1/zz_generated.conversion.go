@@ -730,26 +730,6 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*ClusterVirtualClusterDefaults)(nil), (*management.ClusterVirtualClusterDefaults)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_ClusterVirtualClusterDefaults_To_management_ClusterVirtualClusterDefaults(a.(*ClusterVirtualClusterDefaults), b.(*management.ClusterVirtualClusterDefaults), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.ClusterVirtualClusterDefaults)(nil), (*ClusterVirtualClusterDefaults)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_ClusterVirtualClusterDefaults_To_v1_ClusterVirtualClusterDefaults(a.(*management.ClusterVirtualClusterDefaults), b.(*ClusterVirtualClusterDefaults), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*ClusterVirtualClusterDefaultsList)(nil), (*management.ClusterVirtualClusterDefaultsList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_ClusterVirtualClusterDefaultsList_To_management_ClusterVirtualClusterDefaultsList(a.(*ClusterVirtualClusterDefaultsList), b.(*management.ClusterVirtualClusterDefaultsList), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.ClusterVirtualClusterDefaultsList)(nil), (*ClusterVirtualClusterDefaultsList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_ClusterVirtualClusterDefaultsList_To_v1_ClusterVirtualClusterDefaultsList(a.(*management.ClusterVirtualClusterDefaultsList), b.(*ClusterVirtualClusterDefaultsList), scope)
-	}); err != nil {
-		return err
-	}
 	if err := s.AddGeneratedConversionFunc((*Config)(nil), (*management.Config)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_Config_To_management_Config(a.(*Config), b.(*management.Config), scope)
 	}); err != nil {
@@ -907,6 +887,46 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*management.CostControlSettings)(nil), (*CostControlSettings)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_management_CostControlSettings_To_v1_CostControlSettings(a.(*management.CostControlSettings), b.(*CostControlSettings), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DatabaseConnector)(nil), (*management.DatabaseConnector)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DatabaseConnector_To_management_DatabaseConnector(a.(*DatabaseConnector), b.(*management.DatabaseConnector), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DatabaseConnector)(nil), (*DatabaseConnector)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DatabaseConnector_To_v1_DatabaseConnector(a.(*management.DatabaseConnector), b.(*DatabaseConnector), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DatabaseConnectorList)(nil), (*management.DatabaseConnectorList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DatabaseConnectorList_To_management_DatabaseConnectorList(a.(*DatabaseConnectorList), b.(*management.DatabaseConnectorList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DatabaseConnectorList)(nil), (*DatabaseConnectorList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DatabaseConnectorList_To_v1_DatabaseConnectorList(a.(*management.DatabaseConnectorList), b.(*DatabaseConnectorList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DatabaseConnectorSpec)(nil), (*management.DatabaseConnectorSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec(a.(*DatabaseConnectorSpec), b.(*management.DatabaseConnectorSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DatabaseConnectorSpec)(nil), (*DatabaseConnectorSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec(a.(*management.DatabaseConnectorSpec), b.(*DatabaseConnectorSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DatabaseConnectorStatus)(nil), (*management.DatabaseConnectorStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus(a.(*DatabaseConnectorStatus), b.(*management.DatabaseConnectorStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DatabaseConnectorStatus)(nil), (*DatabaseConnectorStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus(a.(*management.DatabaseConnectorStatus), b.(*DatabaseConnectorStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -1687,6 +1707,126 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*management.ManagementRole)(nil), (*ManagementRole)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_management_ManagementRole_To_v1_ManagementRole(a.(*management.ManagementRole), b.(*ManagementRole), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeClaim)(nil), (*management.NodeClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeClaim_To_management_NodeClaim(a.(*NodeClaim), b.(*management.NodeClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeClaim)(nil), (*NodeClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeClaim_To_v1_NodeClaim(a.(*management.NodeClaim), b.(*NodeClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeClaimList)(nil), (*management.NodeClaimList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeClaimList_To_management_NodeClaimList(a.(*NodeClaimList), b.(*management.NodeClaimList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeClaimList)(nil), (*NodeClaimList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeClaimList_To_v1_NodeClaimList(a.(*management.NodeClaimList), b.(*NodeClaimList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeClaimSpec)(nil), (*management.NodeClaimSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeClaimSpec_To_management_NodeClaimSpec(a.(*NodeClaimSpec), b.(*management.NodeClaimSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeClaimSpec)(nil), (*NodeClaimSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeClaimSpec_To_v1_NodeClaimSpec(a.(*management.NodeClaimSpec), b.(*NodeClaimSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeClaimStatus)(nil), (*management.NodeClaimStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeClaimStatus_To_management_NodeClaimStatus(a.(*NodeClaimStatus), b.(*management.NodeClaimStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeClaimStatus)(nil), (*NodeClaimStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeClaimStatus_To_v1_NodeClaimStatus(a.(*management.NodeClaimStatus), b.(*NodeClaimStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeProvider)(nil), (*management.NodeProvider)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeProvider_To_management_NodeProvider(a.(*NodeProvider), b.(*management.NodeProvider), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeProvider)(nil), (*NodeProvider)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeProvider_To_v1_NodeProvider(a.(*management.NodeProvider), b.(*NodeProvider), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeProviderList)(nil), (*management.NodeProviderList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeProviderList_To_management_NodeProviderList(a.(*NodeProviderList), b.(*management.NodeProviderList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeProviderList)(nil), (*NodeProviderList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeProviderList_To_v1_NodeProviderList(a.(*management.NodeProviderList), b.(*NodeProviderList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeProviderSpec)(nil), (*management.NodeProviderSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeProviderSpec_To_management_NodeProviderSpec(a.(*NodeProviderSpec), b.(*management.NodeProviderSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeProviderSpec)(nil), (*NodeProviderSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeProviderSpec_To_v1_NodeProviderSpec(a.(*management.NodeProviderSpec), b.(*NodeProviderSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeProviderStatus)(nil), (*management.NodeProviderStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeProviderStatus_To_management_NodeProviderStatus(a.(*NodeProviderStatus), b.(*management.NodeProviderStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeProviderStatus)(nil), (*NodeProviderStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeProviderStatus_To_v1_NodeProviderStatus(a.(*management.NodeProviderStatus), b.(*NodeProviderStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeType)(nil), (*management.NodeType)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeType_To_management_NodeType(a.(*NodeType), b.(*management.NodeType), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeType)(nil), (*NodeType)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeType_To_v1_NodeType(a.(*management.NodeType), b.(*NodeType), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeTypeList)(nil), (*management.NodeTypeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeTypeList_To_management_NodeTypeList(a.(*NodeTypeList), b.(*management.NodeTypeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeTypeList)(nil), (*NodeTypeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeTypeList_To_v1_NodeTypeList(a.(*management.NodeTypeList), b.(*NodeTypeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeTypeSpec)(nil), (*management.NodeTypeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeTypeSpec_To_management_NodeTypeSpec(a.(*NodeTypeSpec), b.(*management.NodeTypeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeTypeSpec)(nil), (*NodeTypeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeTypeSpec_To_v1_NodeTypeSpec(a.(*management.NodeTypeSpec), b.(*NodeTypeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*NodeTypeStatus)(nil), (*management.NodeTypeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_NodeTypeStatus_To_management_NodeTypeStatus(a.(*NodeTypeStatus), b.(*management.NodeTypeStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.NodeTypeStatus)(nil), (*NodeTypeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_NodeTypeStatus_To_v1_NodeTypeStatus(a.(*management.NodeTypeStatus), b.(*NodeTypeStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -3992,6 +4132,7 @@ func autoConvert_v1_AuthenticationOIDC_To_management_AuthenticationOIDC(in *Auth
 	out.LoftUsernameClaim = in.LoftUsernameClaim
 	out.UsernameClaim = in.UsernameClaim
 	out.EmailClaim = in.EmailClaim
+	out.AllowedExtraClaims = *(*[]string)(unsafe.Pointer(&in.AllowedExtraClaims))
 	out.UsernamePrefix = in.UsernamePrefix
 	out.GroupsClaim = in.GroupsClaim
 	out.Groups = *(*[]string)(unsafe.Pointer(&in.Groups))
@@ -4019,6 +4160,7 @@ func autoConvert_management_AuthenticationOIDC_To_v1_AuthenticationOIDC(in *mana
 	out.LoftUsernameClaim = in.LoftUsernameClaim
 	out.UsernameClaim = in.UsernameClaim
 	out.EmailClaim = in.EmailClaim
+	out.AllowedExtraClaims = *(*[]string)(unsafe.Pointer(&in.AllowedExtraClaims))
 	out.UsernamePrefix = in.UsernamePrefix
 	out.GroupsClaim = in.GroupsClaim
 	out.Groups = *(*[]string)(unsafe.Pointer(&in.Groups))
@@ -5055,56 +5197,6 @@ func Convert_management_ClusterStatus_To_v1_ClusterStatus(in *management.Cluster
 	return autoConvert_management_ClusterStatus_To_v1_ClusterStatus(in, out, s)
 }
 
-func autoConvert_v1_ClusterVirtualClusterDefaults_To_management_ClusterVirtualClusterDefaults(in *ClusterVirtualClusterDefaults, out *management.ClusterVirtualClusterDefaults, s conversion.Scope) error {
-	out.ObjectMeta = in.ObjectMeta
-	out.DefaultTemplate = (*storagev1.VirtualClusterTemplate)(unsafe.Pointer(in.DefaultTemplate))
-	out.LatestVersion = in.LatestVersion
-	out.Values = in.Values
-	out.Warning = in.Warning
-	return nil
-}
-
-// Convert_v1_ClusterVirtualClusterDefaults_To_management_ClusterVirtualClusterDefaults is an autogenerated conversion function.
-func Convert_v1_ClusterVirtualClusterDefaults_To_management_ClusterVirtualClusterDefaults(in *ClusterVirtualClusterDefaults, out *management.ClusterVirtualClusterDefaults, s conversion.Scope) error {
-	return autoConvert_v1_ClusterVirtualClusterDefaults_To_management_ClusterVirtualClusterDefaults(in, out, s)
-}
-
-func autoConvert_management_ClusterVirtualClusterDefaults_To_v1_ClusterVirtualClusterDefaults(in *management.ClusterVirtualClusterDefaults, out *ClusterVirtualClusterDefaults, s conversion.Scope) error {
-	out.ObjectMeta = in.ObjectMeta
-	out.DefaultTemplate = (*storagev1.VirtualClusterTemplate)(unsafe.Pointer(in.DefaultTemplate))
-	out.LatestVersion = in.LatestVersion
-	out.Values = in.Values
-	out.Warning = in.Warning
-	return nil
-}
-
-// Convert_management_ClusterVirtualClusterDefaults_To_v1_ClusterVirtualClusterDefaults is an autogenerated conversion function.
-func Convert_management_ClusterVirtualClusterDefaults_To_v1_ClusterVirtualClusterDefaults(in *management.ClusterVirtualClusterDefaults, out *ClusterVirtualClusterDefaults, s conversion.Scope) error {
-	return autoConvert_management_ClusterVirtualClusterDefaults_To_v1_ClusterVirtualClusterDefaults(in, out, s)
-}
-
-func autoConvert_v1_ClusterVirtualClusterDefaultsList_To_management_ClusterVirtualClusterDefaultsList(in *ClusterVirtualClusterDefaultsList, out *management.ClusterVirtualClusterDefaultsList, s conversion.Scope) error {
-	out.ListMeta = in.ListMeta
-	out.Items = *(*[]management.ClusterVirtualClusterDefaults)(unsafe.Pointer(&in.Items))
-	return nil
-}
-
-// Convert_v1_ClusterVirtualClusterDefaultsList_To_management_ClusterVirtualClusterDefaultsList is an autogenerated conversion function.
-func Convert_v1_ClusterVirtualClusterDefaultsList_To_management_ClusterVirtualClusterDefaultsList(in *ClusterVirtualClusterDefaultsList, out *management.ClusterVirtualClusterDefaultsList, s conversion.Scope) error {
-	return autoConvert_v1_ClusterVirtualClusterDefaultsList_To_management_ClusterVirtualClusterDefaultsList(in, out, s)
-}
-
-func autoConvert_management_ClusterVirtualClusterDefaultsList_To_v1_ClusterVirtualClusterDefaultsList(in *management.ClusterVirtualClusterDefaultsList, out *ClusterVirtualClusterDefaultsList, s conversion.Scope) error {
-	out.ListMeta = in.ListMeta
-	out.Items = *(*[]ClusterVirtualClusterDefaults)(unsafe.Pointer(&in.Items))
-	return nil
-}
-
-// Convert_management_ClusterVirtualClusterDefaultsList_To_v1_ClusterVirtualClusterDefaultsList is an autogenerated conversion function.
-func Convert_management_ClusterVirtualClusterDefaultsList_To_v1_ClusterVirtualClusterDefaultsList(in *management.ClusterVirtualClusterDefaultsList, out *ClusterVirtualClusterDefaultsList, s conversion.Scope) error {
-	return autoConvert_management_ClusterVirtualClusterDefaultsList_To_v1_ClusterVirtualClusterDefaultsList(in, out, s)
-}
-
 func autoConvert_v1_Config_To_management_Config(in *Config, out *management.Config, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
 	if err := Convert_v1_ConfigSpec_To_management_ConfigSpec(&in.Spec, &out.Spec, s); err != nil {
@@ -5531,6 +5623,100 @@ func autoConvert_management_CostControlSettings_To_v1_CostControlSettings(in *ma
 // Convert_management_CostControlSettings_To_v1_CostControlSettings is an autogenerated conversion function.
 func Convert_management_CostControlSettings_To_v1_CostControlSettings(in *management.CostControlSettings, out *CostControlSettings, s conversion.Scope) error {
 	return autoConvert_management_CostControlSettings_To_v1_CostControlSettings(in, out, s)
+}
+
+func autoConvert_v1_DatabaseConnector_To_management_DatabaseConnector(in *DatabaseConnector, out *management.DatabaseConnector, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_DatabaseConnector_To_management_DatabaseConnector is an autogenerated conversion function.
+func Convert_v1_DatabaseConnector_To_management_DatabaseConnector(in *DatabaseConnector, out *management.DatabaseConnector, s conversion.Scope) error {
+	return autoConvert_v1_DatabaseConnector_To_management_DatabaseConnector(in, out, s)
+}
+
+func autoConvert_management_DatabaseConnector_To_v1_DatabaseConnector(in *management.DatabaseConnector, out *DatabaseConnector, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_management_DatabaseConnector_To_v1_DatabaseConnector is an autogenerated conversion function.
+func Convert_management_DatabaseConnector_To_v1_DatabaseConnector(in *management.DatabaseConnector, out *DatabaseConnector, s conversion.Scope) error {
+	return autoConvert_management_DatabaseConnector_To_v1_DatabaseConnector(in, out, s)
+}
+
+func autoConvert_v1_DatabaseConnectorList_To_management_DatabaseConnectorList(in *DatabaseConnectorList, out *management.DatabaseConnectorList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]management.DatabaseConnector)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_DatabaseConnectorList_To_management_DatabaseConnectorList is an autogenerated conversion function.
+func Convert_v1_DatabaseConnectorList_To_management_DatabaseConnectorList(in *DatabaseConnectorList, out *management.DatabaseConnectorList, s conversion.Scope) error {
+	return autoConvert_v1_DatabaseConnectorList_To_management_DatabaseConnectorList(in, out, s)
+}
+
+func autoConvert_management_DatabaseConnectorList_To_v1_DatabaseConnectorList(in *management.DatabaseConnectorList, out *DatabaseConnectorList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]DatabaseConnector)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_management_DatabaseConnectorList_To_v1_DatabaseConnectorList is an autogenerated conversion function.
+func Convert_management_DatabaseConnectorList_To_v1_DatabaseConnectorList(in *management.DatabaseConnectorList, out *DatabaseConnectorList, s conversion.Scope) error {
+	return autoConvert_management_DatabaseConnectorList_To_v1_DatabaseConnectorList(in, out, s)
+}
+
+func autoConvert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec(in *DatabaseConnectorSpec, out *management.DatabaseConnectorSpec, s conversion.Scope) error {
+	out.Type = in.Type
+	out.DisplayName = in.DisplayName
+	return nil
+}
+
+// Convert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec is an autogenerated conversion function.
+func Convert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec(in *DatabaseConnectorSpec, out *management.DatabaseConnectorSpec, s conversion.Scope) error {
+	return autoConvert_v1_DatabaseConnectorSpec_To_management_DatabaseConnectorSpec(in, out, s)
+}
+
+func autoConvert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec(in *management.DatabaseConnectorSpec, out *DatabaseConnectorSpec, s conversion.Scope) error {
+	out.Type = in.Type
+	out.DisplayName = in.DisplayName
+	return nil
+}
+
+// Convert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec is an autogenerated conversion function.
+func Convert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec(in *management.DatabaseConnectorSpec, out *DatabaseConnectorSpec, s conversion.Scope) error {
+	return autoConvert_management_DatabaseConnectorSpec_To_v1_DatabaseConnectorSpec(in, out, s)
+}
+
+func autoConvert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus(in *DatabaseConnectorStatus, out *management.DatabaseConnectorStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus is an autogenerated conversion function.
+func Convert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus(in *DatabaseConnectorStatus, out *management.DatabaseConnectorStatus, s conversion.Scope) error {
+	return autoConvert_v1_DatabaseConnectorStatus_To_management_DatabaseConnectorStatus(in, out, s)
+}
+
+func autoConvert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus(in *management.DatabaseConnectorStatus, out *DatabaseConnectorStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus is an autogenerated conversion function.
+func Convert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus(in *management.DatabaseConnectorStatus, out *DatabaseConnectorStatus, s conversion.Scope) error {
+	return autoConvert_management_DatabaseConnectorStatus_To_v1_DatabaseConnectorStatus(in, out, s)
 }
 
 func autoConvert_v1_DevPodEnvironmentTemplate_To_management_DevPodEnvironmentTemplate(in *DevPodEnvironmentTemplate, out *management.DevPodEnvironmentTemplate, s conversion.Scope) error {
@@ -7444,6 +7630,288 @@ func autoConvert_management_ManagementRole_To_v1_ManagementRole(in *management.M
 // Convert_management_ManagementRole_To_v1_ManagementRole is an autogenerated conversion function.
 func Convert_management_ManagementRole_To_v1_ManagementRole(in *management.ManagementRole, out *ManagementRole, s conversion.Scope) error {
 	return autoConvert_management_ManagementRole_To_v1_ManagementRole(in, out, s)
+}
+
+func autoConvert_v1_NodeClaim_To_management_NodeClaim(in *NodeClaim, out *management.NodeClaim, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_NodeClaimSpec_To_management_NodeClaimSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_NodeClaimStatus_To_management_NodeClaimStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_NodeClaim_To_management_NodeClaim is an autogenerated conversion function.
+func Convert_v1_NodeClaim_To_management_NodeClaim(in *NodeClaim, out *management.NodeClaim, s conversion.Scope) error {
+	return autoConvert_v1_NodeClaim_To_management_NodeClaim(in, out, s)
+}
+
+func autoConvert_management_NodeClaim_To_v1_NodeClaim(in *management.NodeClaim, out *NodeClaim, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_management_NodeClaimSpec_To_v1_NodeClaimSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_management_NodeClaimStatus_To_v1_NodeClaimStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_management_NodeClaim_To_v1_NodeClaim is an autogenerated conversion function.
+func Convert_management_NodeClaim_To_v1_NodeClaim(in *management.NodeClaim, out *NodeClaim, s conversion.Scope) error {
+	return autoConvert_management_NodeClaim_To_v1_NodeClaim(in, out, s)
+}
+
+func autoConvert_v1_NodeClaimList_To_management_NodeClaimList(in *NodeClaimList, out *management.NodeClaimList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]management.NodeClaim)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_NodeClaimList_To_management_NodeClaimList is an autogenerated conversion function.
+func Convert_v1_NodeClaimList_To_management_NodeClaimList(in *NodeClaimList, out *management.NodeClaimList, s conversion.Scope) error {
+	return autoConvert_v1_NodeClaimList_To_management_NodeClaimList(in, out, s)
+}
+
+func autoConvert_management_NodeClaimList_To_v1_NodeClaimList(in *management.NodeClaimList, out *NodeClaimList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]NodeClaim)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_management_NodeClaimList_To_v1_NodeClaimList is an autogenerated conversion function.
+func Convert_management_NodeClaimList_To_v1_NodeClaimList(in *management.NodeClaimList, out *NodeClaimList, s conversion.Scope) error {
+	return autoConvert_management_NodeClaimList_To_v1_NodeClaimList(in, out, s)
+}
+
+func autoConvert_v1_NodeClaimSpec_To_management_NodeClaimSpec(in *NodeClaimSpec, out *management.NodeClaimSpec, s conversion.Scope) error {
+	out.NodeClaimSpec = in.NodeClaimSpec
+	return nil
+}
+
+// Convert_v1_NodeClaimSpec_To_management_NodeClaimSpec is an autogenerated conversion function.
+func Convert_v1_NodeClaimSpec_To_management_NodeClaimSpec(in *NodeClaimSpec, out *management.NodeClaimSpec, s conversion.Scope) error {
+	return autoConvert_v1_NodeClaimSpec_To_management_NodeClaimSpec(in, out, s)
+}
+
+func autoConvert_management_NodeClaimSpec_To_v1_NodeClaimSpec(in *management.NodeClaimSpec, out *NodeClaimSpec, s conversion.Scope) error {
+	out.NodeClaimSpec = in.NodeClaimSpec
+	return nil
+}
+
+// Convert_management_NodeClaimSpec_To_v1_NodeClaimSpec is an autogenerated conversion function.
+func Convert_management_NodeClaimSpec_To_v1_NodeClaimSpec(in *management.NodeClaimSpec, out *NodeClaimSpec, s conversion.Scope) error {
+	return autoConvert_management_NodeClaimSpec_To_v1_NodeClaimSpec(in, out, s)
+}
+
+func autoConvert_v1_NodeClaimStatus_To_management_NodeClaimStatus(in *NodeClaimStatus, out *management.NodeClaimStatus, s conversion.Scope) error {
+	out.NodeClaimStatus = in.NodeClaimStatus
+	return nil
+}
+
+// Convert_v1_NodeClaimStatus_To_management_NodeClaimStatus is an autogenerated conversion function.
+func Convert_v1_NodeClaimStatus_To_management_NodeClaimStatus(in *NodeClaimStatus, out *management.NodeClaimStatus, s conversion.Scope) error {
+	return autoConvert_v1_NodeClaimStatus_To_management_NodeClaimStatus(in, out, s)
+}
+
+func autoConvert_management_NodeClaimStatus_To_v1_NodeClaimStatus(in *management.NodeClaimStatus, out *NodeClaimStatus, s conversion.Scope) error {
+	out.NodeClaimStatus = in.NodeClaimStatus
+	return nil
+}
+
+// Convert_management_NodeClaimStatus_To_v1_NodeClaimStatus is an autogenerated conversion function.
+func Convert_management_NodeClaimStatus_To_v1_NodeClaimStatus(in *management.NodeClaimStatus, out *NodeClaimStatus, s conversion.Scope) error {
+	return autoConvert_management_NodeClaimStatus_To_v1_NodeClaimStatus(in, out, s)
+}
+
+func autoConvert_v1_NodeProvider_To_management_NodeProvider(in *NodeProvider, out *management.NodeProvider, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_NodeProviderSpec_To_management_NodeProviderSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_NodeProviderStatus_To_management_NodeProviderStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_NodeProvider_To_management_NodeProvider is an autogenerated conversion function.
+func Convert_v1_NodeProvider_To_management_NodeProvider(in *NodeProvider, out *management.NodeProvider, s conversion.Scope) error {
+	return autoConvert_v1_NodeProvider_To_management_NodeProvider(in, out, s)
+}
+
+func autoConvert_management_NodeProvider_To_v1_NodeProvider(in *management.NodeProvider, out *NodeProvider, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_management_NodeProviderSpec_To_v1_NodeProviderSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_management_NodeProviderStatus_To_v1_NodeProviderStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_management_NodeProvider_To_v1_NodeProvider is an autogenerated conversion function.
+func Convert_management_NodeProvider_To_v1_NodeProvider(in *management.NodeProvider, out *NodeProvider, s conversion.Scope) error {
+	return autoConvert_management_NodeProvider_To_v1_NodeProvider(in, out, s)
+}
+
+func autoConvert_v1_NodeProviderList_To_management_NodeProviderList(in *NodeProviderList, out *management.NodeProviderList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]management.NodeProvider)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_NodeProviderList_To_management_NodeProviderList is an autogenerated conversion function.
+func Convert_v1_NodeProviderList_To_management_NodeProviderList(in *NodeProviderList, out *management.NodeProviderList, s conversion.Scope) error {
+	return autoConvert_v1_NodeProviderList_To_management_NodeProviderList(in, out, s)
+}
+
+func autoConvert_management_NodeProviderList_To_v1_NodeProviderList(in *management.NodeProviderList, out *NodeProviderList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]NodeProvider)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_management_NodeProviderList_To_v1_NodeProviderList is an autogenerated conversion function.
+func Convert_management_NodeProviderList_To_v1_NodeProviderList(in *management.NodeProviderList, out *NodeProviderList, s conversion.Scope) error {
+	return autoConvert_management_NodeProviderList_To_v1_NodeProviderList(in, out, s)
+}
+
+func autoConvert_v1_NodeProviderSpec_To_management_NodeProviderSpec(in *NodeProviderSpec, out *management.NodeProviderSpec, s conversion.Scope) error {
+	out.NodeProviderSpec = in.NodeProviderSpec
+	return nil
+}
+
+// Convert_v1_NodeProviderSpec_To_management_NodeProviderSpec is an autogenerated conversion function.
+func Convert_v1_NodeProviderSpec_To_management_NodeProviderSpec(in *NodeProviderSpec, out *management.NodeProviderSpec, s conversion.Scope) error {
+	return autoConvert_v1_NodeProviderSpec_To_management_NodeProviderSpec(in, out, s)
+}
+
+func autoConvert_management_NodeProviderSpec_To_v1_NodeProviderSpec(in *management.NodeProviderSpec, out *NodeProviderSpec, s conversion.Scope) error {
+	out.NodeProviderSpec = in.NodeProviderSpec
+	return nil
+}
+
+// Convert_management_NodeProviderSpec_To_v1_NodeProviderSpec is an autogenerated conversion function.
+func Convert_management_NodeProviderSpec_To_v1_NodeProviderSpec(in *management.NodeProviderSpec, out *NodeProviderSpec, s conversion.Scope) error {
+	return autoConvert_management_NodeProviderSpec_To_v1_NodeProviderSpec(in, out, s)
+}
+
+func autoConvert_v1_NodeProviderStatus_To_management_NodeProviderStatus(in *NodeProviderStatus, out *management.NodeProviderStatus, s conversion.Scope) error {
+	out.NodeProviderStatus = in.NodeProviderStatus
+	return nil
+}
+
+// Convert_v1_NodeProviderStatus_To_management_NodeProviderStatus is an autogenerated conversion function.
+func Convert_v1_NodeProviderStatus_To_management_NodeProviderStatus(in *NodeProviderStatus, out *management.NodeProviderStatus, s conversion.Scope) error {
+	return autoConvert_v1_NodeProviderStatus_To_management_NodeProviderStatus(in, out, s)
+}
+
+func autoConvert_management_NodeProviderStatus_To_v1_NodeProviderStatus(in *management.NodeProviderStatus, out *NodeProviderStatus, s conversion.Scope) error {
+	out.NodeProviderStatus = in.NodeProviderStatus
+	return nil
+}
+
+// Convert_management_NodeProviderStatus_To_v1_NodeProviderStatus is an autogenerated conversion function.
+func Convert_management_NodeProviderStatus_To_v1_NodeProviderStatus(in *management.NodeProviderStatus, out *NodeProviderStatus, s conversion.Scope) error {
+	return autoConvert_management_NodeProviderStatus_To_v1_NodeProviderStatus(in, out, s)
+}
+
+func autoConvert_v1_NodeType_To_management_NodeType(in *NodeType, out *management.NodeType, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_NodeTypeSpec_To_management_NodeTypeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_NodeTypeStatus_To_management_NodeTypeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_NodeType_To_management_NodeType is an autogenerated conversion function.
+func Convert_v1_NodeType_To_management_NodeType(in *NodeType, out *management.NodeType, s conversion.Scope) error {
+	return autoConvert_v1_NodeType_To_management_NodeType(in, out, s)
+}
+
+func autoConvert_management_NodeType_To_v1_NodeType(in *management.NodeType, out *NodeType, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_management_NodeTypeSpec_To_v1_NodeTypeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_management_NodeTypeStatus_To_v1_NodeTypeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_management_NodeType_To_v1_NodeType is an autogenerated conversion function.
+func Convert_management_NodeType_To_v1_NodeType(in *management.NodeType, out *NodeType, s conversion.Scope) error {
+	return autoConvert_management_NodeType_To_v1_NodeType(in, out, s)
+}
+
+func autoConvert_v1_NodeTypeList_To_management_NodeTypeList(in *NodeTypeList, out *management.NodeTypeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]management.NodeType)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_NodeTypeList_To_management_NodeTypeList is an autogenerated conversion function.
+func Convert_v1_NodeTypeList_To_management_NodeTypeList(in *NodeTypeList, out *management.NodeTypeList, s conversion.Scope) error {
+	return autoConvert_v1_NodeTypeList_To_management_NodeTypeList(in, out, s)
+}
+
+func autoConvert_management_NodeTypeList_To_v1_NodeTypeList(in *management.NodeTypeList, out *NodeTypeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]NodeType)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_management_NodeTypeList_To_v1_NodeTypeList is an autogenerated conversion function.
+func Convert_management_NodeTypeList_To_v1_NodeTypeList(in *management.NodeTypeList, out *NodeTypeList, s conversion.Scope) error {
+	return autoConvert_management_NodeTypeList_To_v1_NodeTypeList(in, out, s)
+}
+
+func autoConvert_v1_NodeTypeSpec_To_management_NodeTypeSpec(in *NodeTypeSpec, out *management.NodeTypeSpec, s conversion.Scope) error {
+	out.NodeTypeSpec = in.NodeTypeSpec
+	return nil
+}
+
+// Convert_v1_NodeTypeSpec_To_management_NodeTypeSpec is an autogenerated conversion function.
+func Convert_v1_NodeTypeSpec_To_management_NodeTypeSpec(in *NodeTypeSpec, out *management.NodeTypeSpec, s conversion.Scope) error {
+	return autoConvert_v1_NodeTypeSpec_To_management_NodeTypeSpec(in, out, s)
+}
+
+func autoConvert_management_NodeTypeSpec_To_v1_NodeTypeSpec(in *management.NodeTypeSpec, out *NodeTypeSpec, s conversion.Scope) error {
+	out.NodeTypeSpec = in.NodeTypeSpec
+	return nil
+}
+
+// Convert_management_NodeTypeSpec_To_v1_NodeTypeSpec is an autogenerated conversion function.
+func Convert_management_NodeTypeSpec_To_v1_NodeTypeSpec(in *management.NodeTypeSpec, out *NodeTypeSpec, s conversion.Scope) error {
+	return autoConvert_management_NodeTypeSpec_To_v1_NodeTypeSpec(in, out, s)
+}
+
+func autoConvert_v1_NodeTypeStatus_To_management_NodeTypeStatus(in *NodeTypeStatus, out *management.NodeTypeStatus, s conversion.Scope) error {
+	out.NodeTypeStatus = in.NodeTypeStatus
+	return nil
+}
+
+// Convert_v1_NodeTypeStatus_To_management_NodeTypeStatus is an autogenerated conversion function.
+func Convert_v1_NodeTypeStatus_To_management_NodeTypeStatus(in *NodeTypeStatus, out *management.NodeTypeStatus, s conversion.Scope) error {
+	return autoConvert_v1_NodeTypeStatus_To_management_NodeTypeStatus(in, out, s)
+}
+
+func autoConvert_management_NodeTypeStatus_To_v1_NodeTypeStatus(in *management.NodeTypeStatus, out *NodeTypeStatus, s conversion.Scope) error {
+	out.NodeTypeStatus = in.NodeTypeStatus
+	return nil
+}
+
+// Convert_management_NodeTypeStatus_To_v1_NodeTypeStatus is an autogenerated conversion function.
+func Convert_management_NodeTypeStatus_To_v1_NodeTypeStatus(in *management.NodeTypeStatus, out *NodeTypeStatus, s conversion.Scope) error {
+	return autoConvert_management_NodeTypeStatus_To_v1_NodeTypeStatus(in, out, s)
 }
 
 func autoConvert_v1_OIDC_To_management_OIDC(in *OIDC, out *management.OIDC, s conversion.Scope) error {
@@ -10771,6 +11239,8 @@ func Convert_management_VirtualClusterInstanceKubeConfigList_To_v1_VirtualCluste
 
 func autoConvert_v1_VirtualClusterInstanceKubeConfigSpec_To_management_VirtualClusterInstanceKubeConfigSpec(in *VirtualClusterInstanceKubeConfigSpec, out *management.VirtualClusterInstanceKubeConfigSpec, s conversion.Scope) error {
 	out.CertificateTTL = (*int32)(unsafe.Pointer(in.CertificateTTL))
+	out.Server = in.Server
+	out.ClientCert = in.ClientCert
 	return nil
 }
 
@@ -10781,6 +11251,8 @@ func Convert_v1_VirtualClusterInstanceKubeConfigSpec_To_management_VirtualCluste
 
 func autoConvert_management_VirtualClusterInstanceKubeConfigSpec_To_v1_VirtualClusterInstanceKubeConfigSpec(in *management.VirtualClusterInstanceKubeConfigSpec, out *VirtualClusterInstanceKubeConfigSpec, s conversion.Scope) error {
 	out.CertificateTTL = (*int32)(unsafe.Pointer(in.CertificateTTL))
+	out.Server = in.Server
+	out.ClientCert = in.ClientCert
 	return nil
 }
 

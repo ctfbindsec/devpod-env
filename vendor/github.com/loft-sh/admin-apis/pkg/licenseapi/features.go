@@ -40,6 +40,8 @@ const (
 
 	VirtualClusterProDistroExternalDatabase FeatureName = "vcp-distro-external-database" // External Database
 
+	VirtualClusterProDistroPrivateNodes FeatureName = "vcp-distro-private-nodes" // Private Nodes
+
 	ConnectorExternalDatabase FeatureName = "connector-external-database" // Database Connector
 
 	VirtualClusterProDistroSleepMode FeatureName = "vcp-distro-sleep-mode" // SleepMode
@@ -62,7 +64,7 @@ const (
 
 	AutoIngressAuth FeatureName = "auto-ingress-authentication" // Automatic Auth For Ingresses
 
-	OIDCProvider FeatureName = "oidc-provider" // Loft as OIDC Provider
+	OIDCProvider FeatureName = "oidc-provider" // Platform as OIDC Provider
 
 	MultipleSSOProviders FeatureName = "multiple-sso-providers" // Multiple SSO Providers
 
@@ -96,6 +98,12 @@ const (
 
 	ResolveDns FeatureName = "resolve-dns" // Resolve DNS
 
+	IstioIntegration FeatureName = "istio-integration" // Istio Integration
+
+	HybridScheduling FeatureName = "hybrid-scheduling" // Hybrid Scheduling
+
+	SyncNamespacesTohost FeatureName = "sync-namespaces-tohost" // Sync Namespaces toHost
+
 )
 
 func GetFeatures() []FeatureName {
@@ -118,6 +126,7 @@ func GetFeatures() []FeatureName {
 		VirtualClusterProDistroIntegrationsCertManager,
 		VirtualClusterProDistroFips,
 		VirtualClusterProDistroExternalDatabase,
+		VirtualClusterProDistroPrivateNodes,
 		ConnectorExternalDatabase,
 		VirtualClusterProDistroSleepMode,
 		Devpod,
@@ -146,5 +155,8 @@ func GetFeatures() []FeatureName {
 		VNodeRuntime,
 		ProjectQuotas,
 		ResolveDns,
+		IstioIntegration,
+		HybridScheduling,
+		SyncNamespacesTohost,
 	}
 }

@@ -20,6 +20,8 @@ type ConfigExpansion interface{}
 
 type ConvertVirtualClusterConfigExpansion interface{}
 
+type DatabaseConnectorExpansion interface{}
+
 type DevPodEnvironmentTemplateExpansion interface{}
 
 type DevPodWorkspaceInstanceExpansion interface{}
@@ -41,6 +43,12 @@ type LicenseExpansion interface{}
 type LicenseTokenExpansion interface{}
 
 type LoftUpgradeExpansion interface{}
+
+type NodeClaimExpansion interface{}
+
+type NodeProviderExpansion interface{}
+
+type NodeTypeExpansion interface{}
 
 type OIDCClientExpansion interface{}
 

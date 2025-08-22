@@ -121,7 +121,17 @@ var (
 	NewConvertVirtualClusterConfigREST = func(getter generic.RESTOptionsGetter) rest.Storage {
 		return NewConvertVirtualClusterConfigRESTFunc(Factory)
 	}
-	NewConvertVirtualClusterConfigRESTFunc     NewRESTFunc
+	NewConvertVirtualClusterConfigRESTFunc NewRESTFunc
+	ManagementDatabaseConnectorStorage     = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDatabaseConnector,
+		func() runtime.Object { return &DatabaseConnector{} },     // Register versioned resource
+		func() runtime.Object { return &DatabaseConnectorList{} }, // Register versioned resource list
+		NewDatabaseConnectorREST,
+	)
+	NewDatabaseConnectorREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDatabaseConnectorRESTFunc(Factory)
+	}
+	NewDatabaseConnectorRESTFunc               NewRESTFunc
 	ManagementDevPodEnvironmentTemplateStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
 		InternalDevPodEnvironmentTemplate,
 		func() runtime.Object { return &DevPodEnvironmentTemplate{} },     // Register versioned resource
@@ -245,7 +255,49 @@ var (
 	NewLoftUpgradeREST = func(getter generic.RESTOptionsGetter) rest.Storage {
 		return NewLoftUpgradeRESTFunc(Factory)
 	}
-	NewLoftUpgradeRESTFunc      NewRESTFunc
+	NewLoftUpgradeRESTFunc     NewRESTFunc
+	ManagementNodeClaimStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalNodeClaim,
+		func() runtime.Object { return &NodeClaim{} },     // Register versioned resource
+		func() runtime.Object { return &NodeClaimList{} }, // Register versioned resource list
+		NewNodeClaimREST,
+	)
+	NewNodeClaimREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeClaimRESTFunc(Factory)
+	}
+	NewNodeClaimRESTFunc   NewRESTFunc
+	NewNodeClaimStatusREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeClaimStatusRESTFunc(Factory)
+	}
+	NewNodeClaimStatusRESTFunc    NewRESTFunc
+	ManagementNodeProviderStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalNodeProvider,
+		func() runtime.Object { return &NodeProvider{} },     // Register versioned resource
+		func() runtime.Object { return &NodeProviderList{} }, // Register versioned resource list
+		NewNodeProviderREST,
+	)
+	NewNodeProviderREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeProviderRESTFunc(Factory)
+	}
+	NewNodeProviderRESTFunc   NewRESTFunc
+	NewNodeProviderStatusREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeProviderStatusRESTFunc(Factory)
+	}
+	NewNodeProviderStatusRESTFunc NewRESTFunc
+	ManagementNodeTypeStorage     = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalNodeType,
+		func() runtime.Object { return &NodeType{} },     // Register versioned resource
+		func() runtime.Object { return &NodeTypeList{} }, // Register versioned resource list
+		NewNodeTypeREST,
+	)
+	NewNodeTypeREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeTypeRESTFunc(Factory)
+	}
+	NewNodeTypeRESTFunc   NewRESTFunc
+	NewNodeTypeStatusREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewNodeTypeStatusRESTFunc(Factory)
+	}
+	NewNodeTypeStatusRESTFunc   NewRESTFunc
 	ManagementOIDCClientStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
 		InternalOIDCClient,
 		func() runtime.Object { return &OIDCClient{} },     // Register versioned resource
@@ -581,16 +633,8 @@ var (
 	NewClusterResetREST = func(getter generic.RESTOptionsGetter) rest.Storage {
 		return NewClusterResetRESTFunc(Factory)
 	}
-	NewClusterResetRESTFunc                   NewRESTFunc
-	InternalClusterVirtualClusterDefaultsREST = builders.NewInternalSubresource(
-		"clusters", "ClusterVirtualClusterDefaults", "virtualclusterdefaults",
-		func() runtime.Object { return &ClusterVirtualClusterDefaults{} },
-	)
-	NewClusterVirtualClusterDefaultsREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewClusterVirtualClusterDefaultsRESTFunc(Factory)
-	}
-	NewClusterVirtualClusterDefaultsRESTFunc NewRESTFunc
-	InternalClusterAccess                    = builders.NewInternalResource(
+	NewClusterResetRESTFunc NewRESTFunc
+	InternalClusterAccess   = builders.NewInternalResource(
 		"clusteraccesses",
 		"ClusterAccess",
 		func() runtime.Object { return &ClusterAccess{} },
@@ -637,6 +681,18 @@ var (
 		"ConvertVirtualClusterConfigStatus",
 		func() runtime.Object { return &ConvertVirtualClusterConfig{} },
 		func() runtime.Object { return &ConvertVirtualClusterConfigList{} },
+	)
+	InternalDatabaseConnector = builders.NewInternalResource(
+		"databaseconnectors",
+		"DatabaseConnector",
+		func() runtime.Object { return &DatabaseConnector{} },
+		func() runtime.Object { return &DatabaseConnectorList{} },
+	)
+	InternalDatabaseConnectorStatus = builders.NewInternalResourceStatus(
+		"databaseconnectors",
+		"DatabaseConnectorStatus",
+		func() runtime.Object { return &DatabaseConnector{} },
+		func() runtime.Object { return &DatabaseConnectorList{} },
 	)
 	InternalDevPodEnvironmentTemplate = builders.NewInternalResource(
 		"devpodenvironmenttemplates",
@@ -845,6 +901,42 @@ var (
 		"LoftUpgradeStatus",
 		func() runtime.Object { return &LoftUpgrade{} },
 		func() runtime.Object { return &LoftUpgradeList{} },
+	)
+	InternalNodeClaim = builders.NewInternalResource(
+		"nodeclaims",
+		"NodeClaim",
+		func() runtime.Object { return &NodeClaim{} },
+		func() runtime.Object { return &NodeClaimList{} },
+	)
+	InternalNodeClaimStatus = builders.NewInternalResourceStatus(
+		"nodeclaims",
+		"NodeClaimStatus",
+		func() runtime.Object { return &NodeClaim{} },
+		func() runtime.Object { return &NodeClaimList{} },
+	)
+	InternalNodeProvider = builders.NewInternalResource(
+		"nodeproviders",
+		"NodeProvider",
+		func() runtime.Object { return &NodeProvider{} },
+		func() runtime.Object { return &NodeProviderList{} },
+	)
+	InternalNodeProviderStatus = builders.NewInternalResourceStatus(
+		"nodeproviders",
+		"NodeProviderStatus",
+		func() runtime.Object { return &NodeProvider{} },
+		func() runtime.Object { return &NodeProviderList{} },
+	)
+	InternalNodeType = builders.NewInternalResource(
+		"nodetypes",
+		"NodeType",
+		func() runtime.Object { return &NodeType{} },
+		func() runtime.Object { return &NodeTypeList{} },
+	)
+	InternalNodeTypeStatus = builders.NewInternalResourceStatus(
+		"nodetypes",
+		"NodeTypeStatus",
+		func() runtime.Object { return &NodeType{} },
+		func() runtime.Object { return &NodeTypeList{} },
 	)
 	InternalOIDCClient = builders.NewInternalResource(
 		"oidcclients",
@@ -1283,7 +1375,6 @@ var (
 		InternalClusterMemberAccessREST,
 		InternalClusterMembersREST,
 		InternalClusterResetREST,
-		InternalClusterVirtualClusterDefaultsREST,
 		InternalClusterAccess,
 		InternalClusterAccessStatus,
 		InternalClusterRoleTemplate,
@@ -1292,6 +1383,8 @@ var (
 		InternalConfigStatus,
 		InternalConvertVirtualClusterConfig,
 		InternalConvertVirtualClusterConfigStatus,
+		InternalDatabaseConnector,
+		InternalDatabaseConnectorStatus,
 		InternalDevPodEnvironmentTemplate,
 		InternalDevPodEnvironmentTemplateStatus,
 		InternalDevPodWorkspaceInstance,
@@ -1324,6 +1417,12 @@ var (
 		InternalLicenseTokenStatus,
 		InternalLoftUpgrade,
 		InternalLoftUpgradeStatus,
+		InternalNodeClaim,
+		InternalNodeClaimStatus,
+		InternalNodeProvider,
+		InternalNodeProviderStatus,
+		InternalNodeType,
+		InternalNodeTypeStatus,
 		InternalOIDCClient,
 		InternalOIDCClientStatus,
 		InternalOwnedAccessKey,
@@ -1611,6 +1710,7 @@ type AuthenticationOIDC struct {
 	LoftUsernameClaim      string   `json:"loftUsernameClaim,omitempty"`
 	UsernameClaim          string   `json:"usernameClaim,omitempty"`
 	EmailClaim             string   `json:"emailClaim,omitempty"`
+	AllowedExtraClaims     []string `json:"allowedExtraClaims,omitempty"`
 	UsernamePrefix         string   `json:"usernamePrefix,omitempty"`
 	GroupsClaim            string   `json:"groupsClaim,omitempty"`
 	Groups                 []string `json:"groups,omitempty"`
@@ -1835,17 +1935,6 @@ type ClusterStatus struct {
 	Online                  bool `json:"online,omitempty"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
-type ClusterVirtualClusterDefaults struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
-	DefaultTemplate   *storagev1.VirtualClusterTemplate `json:"defaultTemplate,omitempty"`
-	LatestVersion     string                            `json:"latestVersion,omitempty"`
-	Values            string                            `json:"values,omitempty"`
-	Warning           string                            `json:"warning,omitempty"`
-}
-
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -1946,6 +2035,25 @@ type CostControlSettings struct {
 	AvgRAMPricePerNode          *CostControlResourcePrice `json:"averageRAMPricePerNode,omitempty"`
 	GPUSettings                 *CostControlGPUSettings   `json:"gpuSettings,omitempty"`
 	ControlPlanePricePerCluster *CostControlResourcePrice `json:"controlPlanePricePerCluster,omitempty"`
+}
+
+// +genclient
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type DatabaseConnector struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              DatabaseConnectorSpec   `json:"spec,omitempty"`
+	Status            DatabaseConnectorStatus `json:"status,omitempty"`
+}
+
+type DatabaseConnectorSpec struct {
+	Type        string `json:"type,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
+}
+
+type DatabaseConnectorStatus struct {
 }
 
 // +genclient
@@ -2309,6 +2417,63 @@ type MaintenanceWindow struct {
 type ManagementRole struct {
 	ObjectName  `json:",inline"`
 	AssignedVia AssignedVia `json:"assignedVia,omitempty"`
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeClaim struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              NodeClaimSpec   `json:"spec,omitempty"`
+	Status            NodeClaimStatus `json:"status,omitempty"`
+}
+
+type NodeClaimSpec struct {
+	storagev1.NodeClaimSpec `json:",inline"`
+}
+
+type NodeClaimStatus struct {
+	storagev1.NodeClaimStatus `json:",inline"`
+}
+
+// +genclient
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeProvider struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              NodeProviderSpec   `json:"spec,omitempty"`
+	Status            NodeProviderStatus `json:"status,omitempty"`
+}
+
+type NodeProviderSpec struct {
+	storagev1.NodeProviderSpec `json:",inline"`
+}
+
+type NodeProviderStatus struct {
+	storagev1.NodeProviderStatus `json:",inline"`
+}
+
+// +genclient
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeType struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              NodeTypeSpec   `json:"spec,omitempty"`
+	Status            NodeTypeStatus `json:"status,omitempty"`
+}
+
+type NodeTypeSpec struct {
+	storagev1.NodeTypeSpec `json:",inline"`
+}
+
+type NodeTypeStatus struct {
+	storagev1.NodeTypeStatus `json:",inline"`
 }
 
 type OIDC struct {
@@ -2965,6 +3130,8 @@ type VirtualClusterInstanceKubeConfig struct {
 
 type VirtualClusterInstanceKubeConfigSpec struct {
 	CertificateTTL *int32 `json:"certificateTTL,omitempty"`
+	Server         string `json:"server,omitempty"`
+	ClientCert     bool   `json:"clientCert,omitempty"`
 }
 
 type VirtualClusterInstanceKubeConfigStatus struct {
@@ -3604,14 +3771,6 @@ type ClusterResetList struct {
 	Items           []ClusterReset `json:"items"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
-type ClusterVirtualClusterDefaultsList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []ClusterVirtualClusterDefaults `json:"items"`
-}
-
 func (Cluster) NewStatus() interface{} {
 	return ClusterStatus{}
 }
@@ -4182,6 +4341,125 @@ func (s *storageConvertVirtualClusterConfig) UpdateConvertVirtualClusterConfig(c
 }
 
 func (s *storageConvertVirtualClusterConfig) DeleteConvertVirtualClusterConfig(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+// DatabaseConnector Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type DatabaseConnectorStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type DatabaseConnectorStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type DatabaseConnectorList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []DatabaseConnector `json:"items"`
+}
+
+func (DatabaseConnector) NewStatus() interface{} {
+	return DatabaseConnectorStatus{}
+}
+
+func (pc *DatabaseConnector) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *DatabaseConnector) SetStatus(s interface{}) {
+	pc.Status = s.(DatabaseConnectorStatus)
+}
+
+func (pc *DatabaseConnector) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *DatabaseConnector) SetSpec(s interface{}) {
+	pc.Spec = s.(DatabaseConnectorSpec)
+}
+
+func (pc *DatabaseConnector) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *DatabaseConnector) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc DatabaseConnector) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store DatabaseConnector.
+// +k8s:deepcopy-gen=false
+type DatabaseConnectorRegistry interface {
+	ListDatabaseConnectors(ctx context.Context, options *internalversion.ListOptions) (*DatabaseConnectorList, error)
+	GetDatabaseConnector(ctx context.Context, id string, options *metav1.GetOptions) (*DatabaseConnector, error)
+	CreateDatabaseConnector(ctx context.Context, id *DatabaseConnector) (*DatabaseConnector, error)
+	UpdateDatabaseConnector(ctx context.Context, id *DatabaseConnector) (*DatabaseConnector, error)
+	DeleteDatabaseConnector(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewDatabaseConnectorRegistry(sp builders.StandardStorageProvider) DatabaseConnectorRegistry {
+	return &storageDatabaseConnector{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageDatabaseConnector struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageDatabaseConnector) ListDatabaseConnectors(ctx context.Context, options *internalversion.ListOptions) (*DatabaseConnectorList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*DatabaseConnectorList), err
+}
+
+func (s *storageDatabaseConnector) GetDatabaseConnector(ctx context.Context, id string, options *metav1.GetOptions) (*DatabaseConnector, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*DatabaseConnector), nil
+}
+
+func (s *storageDatabaseConnector) CreateDatabaseConnector(ctx context.Context, object *DatabaseConnector) (*DatabaseConnector, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*DatabaseConnector), nil
+}
+
+func (s *storageDatabaseConnector) UpdateDatabaseConnector(ctx context.Context, object *DatabaseConnector) (*DatabaseConnector, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*DatabaseConnector), nil
+}
+
+func (s *storageDatabaseConnector) DeleteDatabaseConnector(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
@@ -5674,6 +5952,363 @@ func (s *storageLoftUpgrade) UpdateLoftUpgrade(ctx context.Context, object *Loft
 }
 
 func (s *storageLoftUpgrade) DeleteLoftUpgrade(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+// NodeClaim Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type NodeClaimStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type NodeClaimStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeClaimList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeClaim `json:"items"`
+}
+
+func (NodeClaim) NewStatus() interface{} {
+	return NodeClaimStatus{}
+}
+
+func (pc *NodeClaim) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *NodeClaim) SetStatus(s interface{}) {
+	pc.Status = s.(NodeClaimStatus)
+}
+
+func (pc *NodeClaim) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *NodeClaim) SetSpec(s interface{}) {
+	pc.Spec = s.(NodeClaimSpec)
+}
+
+func (pc *NodeClaim) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *NodeClaim) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc NodeClaim) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store NodeClaim.
+// +k8s:deepcopy-gen=false
+type NodeClaimRegistry interface {
+	ListNodeClaims(ctx context.Context, options *internalversion.ListOptions) (*NodeClaimList, error)
+	GetNodeClaim(ctx context.Context, id string, options *metav1.GetOptions) (*NodeClaim, error)
+	CreateNodeClaim(ctx context.Context, id *NodeClaim) (*NodeClaim, error)
+	UpdateNodeClaim(ctx context.Context, id *NodeClaim) (*NodeClaim, error)
+	DeleteNodeClaim(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewNodeClaimRegistry(sp builders.StandardStorageProvider) NodeClaimRegistry {
+	return &storageNodeClaim{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageNodeClaim struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageNodeClaim) ListNodeClaims(ctx context.Context, options *internalversion.ListOptions) (*NodeClaimList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeClaimList), err
+}
+
+func (s *storageNodeClaim) GetNodeClaim(ctx context.Context, id string, options *metav1.GetOptions) (*NodeClaim, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeClaim), nil
+}
+
+func (s *storageNodeClaim) CreateNodeClaim(ctx context.Context, object *NodeClaim) (*NodeClaim, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeClaim), nil
+}
+
+func (s *storageNodeClaim) UpdateNodeClaim(ctx context.Context, object *NodeClaim) (*NodeClaim, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeClaim), nil
+}
+
+func (s *storageNodeClaim) DeleteNodeClaim(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+// NodeProvider Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type NodeProviderStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type NodeProviderStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeProviderList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeProvider `json:"items"`
+}
+
+func (NodeProvider) NewStatus() interface{} {
+	return NodeProviderStatus{}
+}
+
+func (pc *NodeProvider) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *NodeProvider) SetStatus(s interface{}) {
+	pc.Status = s.(NodeProviderStatus)
+}
+
+func (pc *NodeProvider) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *NodeProvider) SetSpec(s interface{}) {
+	pc.Spec = s.(NodeProviderSpec)
+}
+
+func (pc *NodeProvider) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *NodeProvider) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc NodeProvider) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store NodeProvider.
+// +k8s:deepcopy-gen=false
+type NodeProviderRegistry interface {
+	ListNodeProviders(ctx context.Context, options *internalversion.ListOptions) (*NodeProviderList, error)
+	GetNodeProvider(ctx context.Context, id string, options *metav1.GetOptions) (*NodeProvider, error)
+	CreateNodeProvider(ctx context.Context, id *NodeProvider) (*NodeProvider, error)
+	UpdateNodeProvider(ctx context.Context, id *NodeProvider) (*NodeProvider, error)
+	DeleteNodeProvider(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewNodeProviderRegistry(sp builders.StandardStorageProvider) NodeProviderRegistry {
+	return &storageNodeProvider{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageNodeProvider struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageNodeProvider) ListNodeProviders(ctx context.Context, options *internalversion.ListOptions) (*NodeProviderList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeProviderList), err
+}
+
+func (s *storageNodeProvider) GetNodeProvider(ctx context.Context, id string, options *metav1.GetOptions) (*NodeProvider, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeProvider), nil
+}
+
+func (s *storageNodeProvider) CreateNodeProvider(ctx context.Context, object *NodeProvider) (*NodeProvider, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeProvider), nil
+}
+
+func (s *storageNodeProvider) UpdateNodeProvider(ctx context.Context, object *NodeProvider) (*NodeProvider, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeProvider), nil
+}
+
+func (s *storageNodeProvider) DeleteNodeProvider(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+// NodeType Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type NodeTypeStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type NodeTypeStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type NodeTypeList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []NodeType `json:"items"`
+}
+
+func (NodeType) NewStatus() interface{} {
+	return NodeTypeStatus{}
+}
+
+func (pc *NodeType) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *NodeType) SetStatus(s interface{}) {
+	pc.Status = s.(NodeTypeStatus)
+}
+
+func (pc *NodeType) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *NodeType) SetSpec(s interface{}) {
+	pc.Spec = s.(NodeTypeSpec)
+}
+
+func (pc *NodeType) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *NodeType) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc NodeType) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store NodeType.
+// +k8s:deepcopy-gen=false
+type NodeTypeRegistry interface {
+	ListNodeTypes(ctx context.Context, options *internalversion.ListOptions) (*NodeTypeList, error)
+	GetNodeType(ctx context.Context, id string, options *metav1.GetOptions) (*NodeType, error)
+	CreateNodeType(ctx context.Context, id *NodeType) (*NodeType, error)
+	UpdateNodeType(ctx context.Context, id *NodeType) (*NodeType, error)
+	DeleteNodeType(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewNodeTypeRegistry(sp builders.StandardStorageProvider) NodeTypeRegistry {
+	return &storageNodeType{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageNodeType struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageNodeType) ListNodeTypes(ctx context.Context, options *internalversion.ListOptions) (*NodeTypeList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeTypeList), err
+}
+
+func (s *storageNodeType) GetNodeType(ctx context.Context, id string, options *metav1.GetOptions) (*NodeType, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeType), nil
+}
+
+func (s *storageNodeType) CreateNodeType(ctx context.Context, object *NodeType) (*NodeType, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeType), nil
+}
+
+func (s *storageNodeType) UpdateNodeType(ctx context.Context, object *NodeType) (*NodeType, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*NodeType), nil
+}
+
+func (s *storageNodeType) DeleteNodeType(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
