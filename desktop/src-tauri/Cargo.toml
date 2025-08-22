@@ -50,7 +50,7 @@ tokio = { version = "1.26.0", features = [
         "sync",
         "net",
 ] }
-thiserror = "1.0.38"
+thiserror = "2.0.12"
 regex = "1.7.1"
 lazy_static = "1.4.0"
 url = "2.3.1"
