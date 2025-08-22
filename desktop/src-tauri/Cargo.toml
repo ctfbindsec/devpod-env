@@ -77,7 +77,7 @@ http-body-util = "0.1.2"
 notify-rust = { git = "https://github.com/hoodie/notify-rust.git", branch = "main" }
 
 [target.'cfg(target_os = "windows")'.dependencies]
-winreg = "0.50.0"
+winreg = "0.52.0"
 windows = { version = "0.48", features = [
         "Win32_Foundation",
         "Win32_UI_WindowsAndMessaging",
