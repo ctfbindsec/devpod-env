@@ -80,7 +80,7 @@ func RemoveHelper(userName string) error {
 
 func createHelperScript() error {
 	// we do it this way instead of os.Create because we need sudo
-	cmd := exec.Command("sudo", "bash", "-c", fmt.Sprintf("echo '%s' > %s", HelperScript, HelperScriptPath))
+	cmd := exec.Command("sudo", "bash", "-c", "echo "+command.Quote([]string{HelperScript})+" > "+HelperScriptPath)
 	if err := cmd.Run(); err != nil {
 		return err
 	}

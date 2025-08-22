@@ -146,7 +146,7 @@ func ToString(credentials *GitCredentials) string {
 
 func SetUser(userName string, user *GitUser) error {
 	if user.Name != "" {
-		shellCommand := fmt.Sprintf(`git config --global user.name "%s"`, user.Name)
+		shellCommand := command.Quote([]string{"git", "config", "--global", "user.name", user.Name})
 		args := []string{}
 		if userName != "" {
 			args = append(args, "su", userName, "-c", shellCommand)
@@ -160,7 +160,7 @@ func SetUser(userName string, user *GitUser) error {
 		}
 	}
 	if user.Email != "" {
-		shellCommand := fmt.Sprintf(`git config --global user.email "%s"`, user.Email)
+		shellCommand := command.Quote([]string{"git", "config", "--global", "user.email", user.Email})
 		args := []string{}
 		if userName != "" {
 			args = append(args, "su", userName, "-c", shellCommand)
