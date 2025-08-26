@@ -202,7 +202,7 @@ jobs:
 
       - name: Build Desktop App
         if: matrix.settings.host == 'ubuntu-22.04' && matrix.settings.cli_only == false
-        uses: tauri-apps/tauri-action@v0.5.15
+        uses: tauri-apps/tauri-action@v0.5.23
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           projectPath: "./desktop"
@@ -221,7 +221,7 @@ jobs:
 
       - name: Build Desktop App
         if: matrix.settings.host == 'macos-latest' && matrix.settings.cli_only == false
-        uses: tauri-apps/tauri-action@v0.5.15
+        uses: tauri-apps/tauri-action@v0.5.23
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           projectPath: "./desktop"
@@ -282,7 +282,7 @@ jobs:
       - name: Build Desktop App
         if: matrix.settings.host == 'windows-latest' && matrix.settings.cli_only == false
         id: build-desktop-app
-        uses: tauri-apps/tauri-action@v0.5.15
+        uses: tauri-apps/tauri-action@v0.5.23
         with:
           projectPath: "./desktop"
           args: " --target ${{ matrix.settings.target }}"
